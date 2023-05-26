@@ -6,4 +6,4 @@ yum install mongodb-org -y
 
 echo -e "\e[31mStart Mongodb Server\e[0m"
 system enable mongod
-system restart mongo
+system restart mongod
