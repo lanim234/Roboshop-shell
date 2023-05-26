@@ -11,7 +11,9 @@ echo -e "\e[33mExtract Frontend\e[0m"
 cd /usr/share/nginx/html
 unzip /tmp/frontend.zip &>>/tmp/roboshop.log
 
-##vim /etc/nginx/default.d/roboshop.conf
+echo -e "\e[34mUpdate Frontend Info\e[0m"
+cp roboshop.conf /etc/nginx/default.d/roboshop.conf
+
 
 echo -e "\e[33mRestart Nginx\e[0m"
 systemctl enable nginx &>>/tmp/roboshop.log
