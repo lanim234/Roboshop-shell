@@ -9,5 +9,5 @@ sed -i  -e 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf
 
 
 echo -e "\e[31mStart Mongodb Server\e[0m"
-system enable mongod &>>/tmp/roboshop.log
-system restart mongod &>>/tmp/roboshop.log
+systemctl enable mongod &>>/tmp/roboshop.log
+systemctl restart mongod &>>/tmp/roboshop.log
