@@ -12,7 +12,7 @@ rm -rf /app &>>/tmp/roboshop.log
 mkdir /app
 
 echo -e "\e[35m Downloading Cart Artifacts\e[0m"
-curl -L -o /tmp/cart.zip https://roboshop-artifacts.s3.amazonaws.com/cart.zip &>>/tmp/roboshop.log
+curl -o /tmp/cart.zip https://roboshop-artifacts.s3.amazonaws.com/cart.zip &>>/tmp/roboshop.log
 cd /app
 
 echo -e "\e[35m Unzipping Artifacts\e[0m"
