@@ -13,6 +13,7 @@ curl -L -o /tmp/shipping.zip https://roboshop-artifacts.s3.amazonaws.com/shippin
 
 
 echo -e "\e[36m Unzipping file\e[0m"
+cd /app
 unzip /tmp/shipping.zip &>>/tmp/roboshop.log
 
 echo -e "\e[36m Download Dependencies\e[0m"
