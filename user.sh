@@ -16,11 +16,11 @@ curl -L -o /tmp/user.zip https://roboshop-artifacts.s3.amazonaws.com/user.zip &>
 cd /app
 
 echo -e "\e[35m Extract Application Content\e[0m"
-unzip /tmp/user.zip &>>/tmpt/roboshop.log
+unzip /tmp/user.zip &>>/tmp/roboshop.log
 cd /app
 
 echo -e "\e[35m Installing NodeJs Dependencies\e[0m"
-npm install &>>/tmpt/roboshop.log
+npm install &>>/tmp/roboshop.log
 
 echo -e "\e[35m Setup SystemD Service \e[0m"
 cp /home/centos/roboshop-shell/user.service /etc/systemd/system/user.service &>>/tmp/roboshop.log
