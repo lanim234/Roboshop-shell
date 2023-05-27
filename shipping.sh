@@ -28,7 +28,7 @@ echo -e "\e[36m Installing MySQL Client\e[0m"
 yum install mysql -y &>>/tmp/roboshop.log
 
 echo -e "\e[36m Load Schema\e[0m"
-mysql -h mysql-dev.devopsb73.shop -uroot -pRoboShop@1 < /app/schema/shipping.sql &>>/tmp/roboshop.log
+mysql -h mysql-dev.devopsb73.shop -uroot -pRoboShop@1 < /home/centos/Roboshop-shell/schema/shipping.sql &>>/tmp/roboshop.log
 
 echo -e "\e[36m Start Shipping\e[0m"
 systemctl daemon-reload &>>/tmp/roboshop.log
