@@ -22,7 +22,7 @@ cd /app
 echo -e "\e[35m Downloading Depencies\e[0m"
 npm install &>>/tmp/roboshop.log
 
-echo -e "\e[35m Downloading Depencies\e[0m"
+echo -e "\e[35m Setting up systemD\e[0m"
 cp /home/centos/Roboshop-shell/cart.service /etc/systemd/system/cart.service &>>/tmp/roboshop.log
 
 echo -e "\e[35m start Cart\e[0m"
