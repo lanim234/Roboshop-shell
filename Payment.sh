@@ -1,29 +1,33 @@
-echo -e "\e[35m Installing Python\e[0m"
-yum install python36 gcc python3-devel -y &>>/tmp/roboshop.log
+ source common.sh
+ component=${payment}
+ 
+ 
+echo -e "${color} Installing Python${nocolor}"
+yum install python36 gcc python3-devel -y &>>${log_file}
 
-echo -e "\e[35m Creating App user\e[0m"
-useradd roboshop &>>/tmp/roboshop.log
+echo -e "${color} Creating App user${nocolor}"
+useradd roboshop &>>${log_file}
 
-echo -e "\e[35m Create a drirectory\e[0m"
-mkdir /app
+echo -e "${color} Create a drirectory${nocolor}"
+mkdir ${app_path}
 
-echo -e "\e[35m Downloading Payment Artifacts\e[0m"
-curl -L -o /tmp/payment.zip https://roboshop-artifacts.s3.amazonaws.com/payment.zip &>>/tmp/roboshop.log
-
-
-echo -e "\e[35m Extracting Artifacts\e[0m"
-cd /app
-unzip /tmp/payment.zip &>>/tmp/roboshop.log
-
-echo -e "\e[35m Installing Repos\e[0m"
-cd /app
-pip3.6 install -r requirements.txt &>>/tmp/roboshop.log
+echo -e "${color} Downloading ${component} Artifacts${nocolor}"
+curl -L -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip &>>${log_file}
 
 
-echo -e "\e[35m Setting Up SystemD\e[0m"
-cp /home/centos/Roboshop-shell/Payment.service /etc/systemd/system/payment.service &>>/tmp/roboshop.log
+echo -e "${color} Extracting Artifacts${nocolor}"
+cd ${app_path}
+unzip /tmp/${component}.zip &>>${log_file}
 
-echo -e "\e[35m Restarting payment\e[0m"
-systemctl daemon-reload &>>/tmp/roboshop.log
-systemctl enable payment &>>/tmp/roboshop.log
-systemctl start payment &>>/tmp/roboshop.log
+echo -e "${color} Installing Repos${nocolor}"
+cd ${app_path}
+pip3.6 install -r requirements.txt &>>${log_file}
+
+
+echo -e "${color} Setting Up SystemD${nocolor}"
+cp /home/centos/Roboshop-shell/${component}.service /etc/systemd/system/${component}.service &>>${log_file}
+
+echo -e "${color} Restarting ${component}${nocolor}"
+systemctl daemon-reload &>>${log_file}
+systemctl enable ${component} &>>${log_file}
+systemctl start ${component} &>>${log_file}

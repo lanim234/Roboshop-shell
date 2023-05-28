@@ -1,12 +1,5 @@
+source common.sh
 component=cart
-color="\e[32m"
-nocolor="\e[0m"
-log_file="/tmp/roboshop.log"
-app_path="/app"
-
-
-
-
 
 
 echo -e "${color} Downloading NodeJs Repos${nocolor}"
