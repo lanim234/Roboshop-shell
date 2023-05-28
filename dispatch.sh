@@ -19,7 +19,7 @@ go get &>>/tmp/roboshop.log
 go build &>>/tmp/roboshop.log
 
 echo -e "\e[36m Setting up SystemD\e[0m"
-cd /home/centos/Roboshop-shell/Dispatch.service /etc/systemd/system/Dispatch.service &>>/tmp/roboshop.log
+cd /home/centos/Roboshop-shell/dispatch.service /etc/systemd/system/dispatch.service &>>/tmp/roboshop.log
 
 echo -e "\e[32m Restarting Dispatch\e[0m"
 systemctl daemon-reload &>>/tmp/roboshop.log
