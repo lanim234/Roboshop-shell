@@ -1,42 +1,45 @@
 component=catalogue
+color="\e[31m"
+nocolor="${nocolor}"
 
-echo -e "\e[31mDownload Repo\e[0m"
+
+echo -e "${color}Download Repo${nocolor}"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>/tmp/roboshop.log
 
-echo -e "\e[31mInstalling NodeJs\e[0m"
+echo -e "${color}Installing NodeJs${nocolor}"
 yum install nodejs -y &>>/tmp/roboshop.log
 
-echo -e "\e[31mAdding User\e[0m"
+echo -e "${color}Adding User${nocolor}"
 useradd roboshop &>>/tmp/roboshop.log
 
-echo -e "\e[31mCreate Application Directory\e[0m"
+echo -e "${color}Create Application Directory${nocolor}"
 rm -rf /app &>>/tmp/roboshop.log
 mkdir /app
 
-echo -e "\e[31mDownload $component Artifacts\e[0m"
+echo -e "${color}Download $component Artifacts${nocolor}"
 curl -o /tmp/$component.zip https://roboshop-artifacts.s3.amazonaws.com/$component.zip &>>/tmp/roboshop.log
 cd /app
 
-echo -e "\e[31mExtract Application Content\e[0m"
+echo -e "${color}Extract Application Content${nocolor}"
 unzip /tmp/$component.zip &>>/tmp/roboshop.log
 cd /app
 
-echo -e "\e[31m Install NodeJS Dependencies\e[0m"
+echo -e "${color} Install NodeJS Dependencies${nocolor}"
 npm install &>>/tmp/roboshop.log
 
-echo -e "\e[31mSet up SystemD Service\e[0m"
+echo -e "${color}Set up SystemD Service${nocolor}"
 cp  /home/centos/Roboshop-shell/$component.service /etc/systemd/system/$component.service &>>/tmp/roboshop.log
 
-echo -e "\e[31mStart $component Service\e[0m"
+echo -e "${color}Start $component Service${nocolor}"
 systemctl daemon-reload &>>/tmp/roboshop.log
 systemctl enable $component &>>/tmp/roboshop
 systemctl start $component &>>/tmp/roboshop.log
 
-echo -e "\e[31mCopy MongoDB Repo File\e[0m"
+echo -e "${color}Copy MongoDB Repo File${nocolor}"
 cp  /home/centos/Roboshop-shell/mongodb.repo /etc/yum.repos.d/mongodb.repo &>>/tmp/roboshop.log
 
-echo -e "\e[31mInstall MongodDB Client\e[0m"
+echo -e "${color}Install MongodDB Client${nocolor}"
 yum install mongodb-org-shell -y &>>/tmp/roboshop.log
 
-echo -e "\e[31m Load Schema\e[0m"
+echo -e "${color} Load Schema${nocolor}"
 mongo --host mongodb-dev.devopsb73.shop </app/schema/$component.js &>>/tmp/roboshop.log
