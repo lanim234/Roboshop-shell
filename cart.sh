@@ -1,8 +1,8 @@
 component=cart
 color="\e[36m"
 nocolor="\e[0m"
-log file="/tmp/roboshop.log"
-app path="/app"
+log_file="/tmp/roboshop.log"
+app_path="/app"
 
 
 
