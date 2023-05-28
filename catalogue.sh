@@ -1,6 +1,6 @@
 component=catalogue
 color="\e[33m"
-nocolor="${nocolor}"
+nocolor="\e[0m"
 
 
 echo -e "${color}Download Repo${nocolor}"
