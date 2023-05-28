@@ -1,41 +1,43 @@
 component=cart
 color="\e[36m"
+nocolor="\e[0m"
+log file="/tmp/roboshop.log"
+app path="/app"
 
 
 
 
 
 
+echo -e "${color} Downloading NodeJs Repos${nocolor}"
+curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>/tmp/${log file}
 
-echo -e "${color} Downloading NodeJs Repos\e[0m"
-curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>/tmp/roboshop.log
+echo -e "${color} Downloading NodeJs${nocolor}"
+yum install nodejs -y &>>${log file}
 
-echo -e "${color} Downloading NodeJs\e[0m"
-yum install nodejs -y &>>/tmp/roboshop.log
+echo -e "${color} Adding User${nocolor}"
+useradd roboshop &>>${log file}
 
-echo -e "${color} Adding User\e[0m"
-useradd roboshop &>>/tmp/roboshop.log
+echo -e "${color} Creating App Directory${nocolor}"
+rm -rf ${app path} &>>${log file}
+mkdir ${app path}
 
-echo -e "${color} Creating App Directory\e[0m"
-rm -rf /app &>>/tmp/roboshop.log
-mkdir /app
+echo -e "${color} Downloading $component Artifacts${nocolor}"
+curl -o /tmp/$component.zip https://roboshop-artifacts.s3.amazonaws.com/$component.zip &>>${log file}
+cd ${app path}
 
-echo -e "${color} Downloading $component Artifacts\e[0m"
-curl -o /tmp/$component.zip https://roboshop-artifacts.s3.amazonaws.com/$component.zip &>>/tmp/roboshop.log
-cd /app
+echo -e "${color} Unzipping Artifacts${nocolor}"
+unzip /tmp/$component.zip &>>${log file}
+cd ${app path}
 
-echo -e "${color} Unzipping Artifacts\e[0m"
-unzip /tmp/$component.zip &>>/tmp/roboshop.log
-cd /app
+echo -e "${color} Downloading Depencies${nocolor}"
+npm install &>>${log file}
 
-echo -e "${color} Downloading Depencies\e[0m"
-npm install &>>/tmp/roboshop.log
-
-echo -e "${color} Setting up systemD\e[0m"
-cp /root/Roboshop-shell/$component.service /etc/systemd/system/$component.service &>>/tmp/roboshop.log
+echo -e "${color} Setting up systemD${nocolor}"
+cp /root/Roboshop-shell/$component.service /etc/systemd/system/$component.service &>>${log file}
 
 
-echo -e "${color} start $component\e[0m"
-systemctl daemon-reload &>>/tmp/roboshop.log
-systemctl enable $component &>>/tmp/roboshop.log
-systemctl restart $component &>>/tmp/roboshop.log
+echo -e "${color} start $component${nocolor}"
+systemctl daemon-reload &>>${log file}
+systemctl enable $component &>>${log file}
+systemctl restart $component &>>${log file}
