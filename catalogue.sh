@@ -1,7 +1,6 @@
 source common.sh
 component=catalogue
 
-
 echo -e "${color}Download Repo${nocolor}"
 curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>${log_file}
 
