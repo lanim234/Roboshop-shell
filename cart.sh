@@ -39,5 +39,5 @@ cp /root/Roboshop-shell/$component.service /etc/systemd/system/$component.servic
 
 echo -e "${color} start $component${nocolor}"
 systemctl daemon-reload &>>${log_file}
-systemctl enable $component &>>${log_ile}
+systemctl enable $component &>>${log_file}
 systemctl restart $component &>>${log_file}
