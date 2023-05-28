@@ -10,7 +10,7 @@ app path="/app"
 
 
 echo -e "${color} Downloading NodeJs Repos${nocolor}"
-curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>/tmp/${log file}
+curl -sL https://rpm.nodesource.com/setup_lts.x | bash &>>${log file}
 
 echo -e "${color} Downloading NodeJs${nocolor}"
 yum install nodejs -y &>>${log file}
