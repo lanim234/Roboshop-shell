@@ -35,7 +35,7 @@ cp  /home/centos/Roboshop-shell/${component}.service /etc/systemd/system/${compo
 echo -e "${color}Start ${component} Service${nocolor}"
 systemctl daemon-reload &>>${log_file}
 systemctl enable ${component} &>>${log_file}
-systemctl start ${component} &>>${}log_file}
+systemctl start ${component} &>>${log_file}
 
 echo -e "${color}Copy MongoDB Repo File${nocolor}"
 cp  /home/centos/Roboshop-shell/mongodb.repo /etc/yum.repos.d/mongodb.repo &>>${log_file}
