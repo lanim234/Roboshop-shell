@@ -141,7 +141,6 @@ python_setup() {
 echo $?
 
   echo -e "${color} Installing Repos${nocolor}"
-  cd ${app_path}
   pip3.6 install -r requirements.txt &>>${log_file}
 
 echo $?
