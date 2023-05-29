@@ -9,6 +9,7 @@ app_presetup() {
   id roboshop
   if [ $? -eq 1]; then
     useradd roboshop &>>${log_file}
+    fi
 
 if [ $? -eq 0 ]; then
   echo "SUCCESS"
