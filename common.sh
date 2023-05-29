@@ -19,8 +19,8 @@ echo -e "${color} Downloading ${component} Artifacts${nocolor}"
 echo $?
 
 echo -e "${color}Extract Application Content${nocolor}"
-cd ${app_path}
 unzip /tmp/${component}.zip &>>${log_file}
+cd ${app_path}
 
 echo $?
 }
