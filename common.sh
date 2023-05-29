@@ -38,7 +38,7 @@ echo -e "${color} Installing MySQL Client${nocolor}"
   yum install mysql -y &>>${log_file}
 
   echo -e "${color} Load Schema${nocolor}"
-  mysql -h mysql-dev.devopsb73.shop -uroot -pRoboShop@1 < /schema/${component}.sql &>>${log_file}
+  mysql -h mysql-dev.devopsb73.shop -uroot -pRoboShop@1 < /home/centos/Roboshop-shell/schema/${component}.sql &>>${log_file}
 
 
 }
