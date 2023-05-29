@@ -103,3 +103,4 @@ python_setup() {
   cp /home/centos/Roboshop-shell/${component}.service /etc/systemd/system/${component}.service &>>${log_file}
 
 systemD_setup
+}
