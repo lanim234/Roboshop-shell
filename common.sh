@@ -105,7 +105,7 @@ echo $?
 }
 
 
-maven() {
+ maven() {
   echo -e "${color} Installing Maven${nocolor}"
   yum install maven -y &>>${log_file}
 
@@ -133,7 +133,7 @@ echo $?
 }
 
 
-python_setup() {
+ python_setup() {
   echo -e "${color} Installing Python${nocolor}"
   yum install python36 gcc python3-devel -y &>>${log_file}
 
