@@ -142,7 +142,7 @@ echo $?
 
   echo -e "${color} Installing Repos${nocolor}"
   pip3.6 install -r requirements.txt &>>${log_file}
-
+  cd ${app_path}
 echo $?
 
 
