@@ -1,16 +1,20 @@
-echo -e "\e[36m Configuring Erlang Repo\e[0m"
-curl -s https://packagecloud.io/install/repositories/rabbitmq/erlang/script.rpm.sh | bash &>>/tmp/roboshop.log
+source common.sh
+component=shipping
 
-echo -e "\e[33m Configuring Yum Repos for RabbitMQ\e[0m"
-curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | bash &>>/tmp/roboshop.log
 
-echo -e "\e[32m Installing RabbitMQ\e[0m"
-yum install rabbitmq-server -y &>>/tmp/roboshop.log
 
-echo -e "\e[36m start RabbitMQ\e[0m"
-systemctl enable rabbitmq-server &>>/tmp/roboshop.log
-systemctl start rabbitmq-server &>>/tmp/roboshop.log
 
-echo -e "\e[35m Create User and permission\e[0m"
-rabbitmqctl add_user roboshop roboshop123 &>>/tmp/roboshop.log
-rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>>/tmp/roboshop.log
+echo -e "${color} Configuring Erlang Repo${nocolor}"
+curl -s https://packagecloud.io/install/repositories/${component}/erlang/script.rpm.sh | bash &>>${log_file}
+
+echo -e "${color} Configuring Yum Repos for ${component}${nocolor}"
+curl -s https://packagecloud.io/install/repositories/${component}/${component}-server/script.rpm.sh | bash &>>${log_file}
+
+echo -e "${color} Installing ${component}${nocolor}"
+yum install ${component}-server -y &>>${log_file}
+
+systemD_setup
+
+echo -e "${color} Create User and permission${nocolor}"
+${component}ctl add_user roboshop roboshop123 &>>${log_file}
+${component}ctl set_permissions -p / roboshop ".*" ".*" ".*" &>>${log_file}
