@@ -42,6 +42,8 @@ echo $?
 
 
 mysql_schema_setup() {
+  systemD_setup
+
 echo -e "${color} Installing MySQL Client${nocolor}"
   yum install mysql -y &>>${log_file}
 
@@ -114,6 +116,7 @@ echo $?
   echo $?
 
   echo -e "${color} Download Dependencies${nocolor}"
+  cd ${app_path}
   mvn clean package &>>${log_file}
   mv target/${component}-1.0.jar ${component}.jar &>>${log_file}
 
