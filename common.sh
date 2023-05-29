@@ -6,7 +6,11 @@ app_path="/app"
 
 app_presetup() {
   echo -e "${color}Adding User${nocolor}"
+  id roboshop &>>${log_file}
+
+  if [ $? -eq - ]; then
   useradd roboshop &>>${log_file}
+
 
 if [ $? -eq 0 ]; then
   echo "SUCCESS"
