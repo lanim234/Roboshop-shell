@@ -41,7 +41,7 @@ status_check
 
 systemD_setup() {
   echo -e "${color}Set up SystemD Service${nocolor}"
-  cp  /home/centos/Roboshop-shell/${component}.service /etc/systemd/system/${component}.service &>>${log_file}
+  cp /home/centos/Roboshop-shell/${component}.service /etc/systemd/system/${component}.service &>>${log_file}
 
 status_check
 
