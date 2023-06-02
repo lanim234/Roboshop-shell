@@ -31,6 +31,7 @@ echo -e "${color} Downloading ${component} Artifacts${nocolor}"
 
 status_check
 
+cd ${app_path}
 echo -e "${color}Extract Application Content${nocolor}"
 unzip /tmp/${component}.zip &>>${log_file}
 
