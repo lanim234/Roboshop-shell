@@ -167,12 +167,6 @@ status_check
 
 status_check
 
-
-  echo -e "${color} Setting Up SystemD${nocolor}"
-  cp /home/centos/Roboshop-shell/${component}.service /etc/systemd/system/${component}.service &>>${log_file}
-
-status_check
-
 systemD_setup
 
 status_check
