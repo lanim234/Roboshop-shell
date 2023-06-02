@@ -133,7 +133,6 @@ status_check
 status_check
 
   echo -e "${color} Download Dependencies${nocolor}"
-  cd ${app_path}
   mvn clean package &>>${log_file}
   mv target/${component}-1.0.jar ${component}.jar &>>${log_file}
 
