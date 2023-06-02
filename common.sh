@@ -33,7 +33,6 @@ status_check
 
 echo -e "${color}Extract Application Content${nocolor}"
 unzip /tmp/${component}.zip &>>${log_file}
-cd ${app_path}
 
 status_check
 }
@@ -134,7 +133,7 @@ status_check
 
   echo -e "${color} Download Dependencies${nocolor}"
   mvn clean package &>>${log_file}
-  mv /home/centos/Roboshop-shell/target/${component}-1.0.jar ${component}.jar &>>${log_file}
+  mv /home/centos/Roboshop-shell/target/${component}-1.0.jar.original ${component}.jar &>>${log_file}
 
 status_check
 
