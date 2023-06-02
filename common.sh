@@ -42,6 +42,7 @@ status_check
 systemD_setup() {
   echo -e "${color}Set up SystemD Service${nocolor}"
   cp /home/centos/Roboshop-shell/${component}.service /etc/systemd/system/${component}.service &>>${log_file}
+  sed -i -e "s/roboshop_app_password/$roboshop_app_password/" /etc/systemd/system/$component.service
 
 status_check
 
@@ -134,7 +135,7 @@ status_check
 
   echo -e "${color} Download Dependencies${nocolor}"
   mvn clean package &>>${log_file}
-  mv /target/${component}-1.0.jar.original ${component}.jar &>>${log_file}
+  mv target/${component}-1.0.jar ${component}.jar &>>${log_file}
 
 status_check
 
@@ -163,6 +164,10 @@ status_check
   echo -e "${color} Installing Repos${nocolor}"
   pip3.6 install -r requirements.txt &>>${log_file}
   cd ${app_path}
+
+status_check
+
+sed -i -e "s/roboshop_app_password/$1/" /home/centos/roboshop-shell/$component.service
 
 status_check
 

@@ -13,6 +13,6 @@ systemctl enable mysqld &>>/tmp/roboshop.log
 systemctl start mysqld &>>/tmp/roboshop.log
 
 echo -e "\e[36m Set password\e[360m"
-mysql_secure_installation --set-root-pass RoboShop@1 &>>/tmp/roboshop.log
+mysql_secure_installation --set-root-pass $1 &>>/tmp/roboshop.log
 
 
