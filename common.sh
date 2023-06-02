@@ -134,7 +134,7 @@ status_check
 
   echo -e "${color} Download Dependencies${nocolor}"
   mvn clean package &>>${log_file}
-  mv /home/centos/Roboshop-shell/target/${component}-1.0.jar.original ${component}.jar &>>${log_file}
+  mv /target/${component}-1.0.jar.original ${component}.jar &>>${log_file}
 
 status_check
 
