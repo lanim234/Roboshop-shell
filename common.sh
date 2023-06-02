@@ -146,7 +146,7 @@ status_check
 
 systemD_setup
 
-status-check
+status_check
 
 }
 
